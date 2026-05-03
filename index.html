@@ -73,70 +73,91 @@ img { display: block; max-width: 100%; }
   justify-content: center;
   flex-direction: column;
   gap: 2rem;
-  transition: opacity 0.5s ease, visibility 0.5s ease;
+  transition: opacity 0.4s ease, visibility 0.4s ease;
 }
 #gate.hidden { opacity: 0; visibility: hidden; pointer-events: none; }
 
-.gate-logo { width: 200px; }
+.gate-logo { width: 180px; height: auto; display: block; }
 
-.gate-tagline {
-  font-size: 0.8rem;
-  color: rgba(255,255,255,0.4);
-  letter-spacing: 0.04em;
-  text-align: center;
+.gate-divider {
+  width: 180px;
+  height: 1px;
+  background: rgba(255,255,255,0.1);
+  margin: 0 auto;
 }
 
-.gate-form {
+.gate-titles {
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: 0.75rem;
-  width: 100%;
-  max-width: 320px;
+  gap: 0.15rem;
+}
+
+.gate-title-line {
+  font-size: 0.85rem;
+  color: rgba(255,255,255,0.5);
+  font-weight: 400;
+  text-align: center;
+  letter-spacing: 0;
+}
+
+.gate-sublabel {
+  font-size: 0.75rem;
+  color: rgba(255,255,255,0.3);
+  font-family: var(--mono);
+  text-align: center;
+  margin-top: 0.25rem;
+}
+
+.gate-input-group {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: 0.5rem;
 }
 
 .gate-input {
-  width: 100%;
+  width: 260px;
   background: transparent;
-  border: 1px solid rgba(255,255,255,0.2);
+  border: 1px solid rgba(255,255,255,0.15);
   color: #fff;
   padding: 0.75rem 1.25rem;
   border-radius: 999px;
   font-family: var(--sans);
-  font-size: 1rem;
+  font-size: 0.9rem;
   outline: none;
-  text-align: center;
   transition: border-color 0.2s;
 }
 .gate-input::placeholder { color: rgba(255,255,255,0.3); }
-.gate-input:focus { border-color: rgba(255,255,255,0.5); }
+.gate-input:focus { border-color: rgba(255,255,255,0.4); }
 
 .gate-btn {
   background: var(--orange);
   color: var(--ink);
   border: none;
   border-radius: 999px;
-  padding: 0.75rem 2rem;
+  padding: 0.75rem 1.5rem;
   font-family: var(--sans);
   font-weight: 600;
-  font-size: 0.95rem;
+  font-size: 0.88rem;
   cursor: pointer;
-  transition: background 0.2s, transform 0.15s;
+  transition: background 0.2s;
+  white-space: nowrap;
 }
-.gate-btn:hover { background: var(--orange-lt); transform: translateY(-1px); }
+.gate-btn:hover { background: var(--orange-dk); }
 
 .gate-error {
-  font-size: 0.8rem;
+  font-size: 0.82rem;
   color: var(--orange);
   text-align: center;
-  min-height: 1.2em;
   opacity: 0;
   transition: opacity 0.2s;
+  height: 1.2em;
 }
 .gate-error.visible { opacity: 1; }
 
 /* ── Main Content ── */
-#main { opacity: 0; transition: opacity 0.5s ease; }
+#main { opacity: 0; transition: opacity 0.4s ease; }
 #main.visible { opacity: 1; }
 
 /* ── Nav ── */
@@ -246,7 +267,7 @@ h2 {
   color: var(--ink);
   margin-bottom: 1rem;
 }
-h2 em { font-style: italic; color: var(--orange); }
+h2 em { font-style: normal; color: var(--orange); }
 
 h3 {
   font-size: 1.1rem;
@@ -287,22 +308,36 @@ h4 {
 }
 
 .hero-keywords {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 0.5rem 1.75rem;
-  margin-top: 1.5rem;
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 0;
+  margin-top: 2rem;
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  overflow: hidden;
 }
 
 .hero-kw {
-  font-size: 0.82rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.2rem;
+  padding: 0.9rem 1rem;
+  border-right: 1px solid var(--line);
+}
+.hero-kw:last-child { border-right: none; }
+
+.hero-kw-label {
+  font-size: 0.72rem;
   color: var(--ink-5);
-  letter-spacing: 0.01em;
+  letter-spacing: 0.03em;
+  text-transform: uppercase;
+  font-family: var(--mono);
 }
 
 .hero-kw-val {
-  color: var(--ink-4);
+  font-size: 0.88rem;
+  color: var(--ink-2);
   font-weight: 500;
-  margin-left: 0.35rem;
 }
 
 .hero-ctas {
@@ -1128,7 +1163,7 @@ details[open] summary::after { transform: rotate(180deg); }
 
 /* ── Section subheadings ── */
 .sub-section-title {
-  font-size: 1rem;
+  font-size: 1.25rem;
   font-weight: 600;
   color: var(--ink);
   margin: 2.5rem 0 1rem;
@@ -1184,34 +1219,40 @@ details[open] summary::after { transform: rotate(180deg); }
      PASSWORD GATE
 ══════════════════════════════════════ -->
 <div id="gate">
-  <!-- NAUCode Full Logo -->
-  <div class="gate-logo">
-    <svg viewBox="0 0 957 159" fill="none" xmlns="http://www.w3.org/2000/svg" style="width:100%;height:auto;">
-      <g clip-path="url(#gclip)">
-        <path d="M229.477 89.9261H260.805C255.904 113.286 234.94 131.41 210.134 131.41C181.538 131.41 158.365 107.671 158.365 79.5063C158.365 51.3415 181.538 27.5901 210.134 27.5901C234.94 27.5901 255.904 45.7138 260.805 69.0865H229.477C226.184 60.6514 218.878 55.1934 210.134 55.1934C197.966 55.1934 188.883 65.4174 188.883 79.5063C188.883 93.5953 197.966 103.819 210.134 103.819C218.878 103.819 226.184 98.3612 229.477 89.9261Z" fill="#FF6241"/>
-        <path d="M0 128.707V30.293H22.5975L27.0411 39.9424H28.0083C30.7137 36.4691 40.5682 27.5901 55.6245 27.5901C78.9931 27.5901 95.0295 44.3819 95.0295 70.0397V128.707H64.5119V73.9047C64.5119 63.6808 57.3628 55.768 47.5213 55.768C37.6798 55.768 30.5307 63.6808 30.5307 73.9047V128.707H0Z" fill="#FF6241"/>
-        <path d="M145.622 116.355C145.622 138.735 129.782 153.02 121.483 159L116.464 152.054C120.515 147.81 125.73 141.059 127.272 131.41C118.006 130.835 111.249 123.497 111.249 114.239C111.249 104.982 118.581 97.0558 128.24 97.0558C137.898 97.0558 145.622 104.394 145.622 116.355Z" fill="#FF6241"/>
-        <path d="M145.622 47.4636C145.622 57.113 138.277 64.6471 128.436 64.6471C118.594 64.6471 111.249 57.113 111.249 47.4636C111.249 37.8142 118.581 30.2931 128.436 30.2931C138.29 30.2931 145.622 37.8272 145.622 47.4636Z" fill="#FF6241"/>
-        <path d="M304.223 0L253.303 159H282.854L333.956 0H304.223Z" fill="#FF6241"/>
-        <path d="M421.932 30.476H434.688V128.524H422.625L372.712 53.3134V128.524H359.956V30.476H372.019L421.932 105.687V30.476Z" fill="#0A0A26"/>
-        <path d="M519.223 128.524L510.675 104.995H468.33L459.782 128.524H446.608L483.621 30.476H495.959L532.972 128.524H519.236H519.223ZM489.503 47.8423L472.813 93.0862H506.179L489.503 47.8423Z" fill="#0A0A26"/>
-        <path d="M541.389 92.6684V30.476H554.289V92.6684C554.289 107.932 563.542 117.882 577.84 117.882C592.139 117.882 601.392 107.932 601.392 92.6684V30.476H614.292V92.6684C614.292 114.239 599.706 130.065 577.84 130.065C555.975 130.065 541.389 114.239 541.389 92.6684Z" fill="#0A0A26"/>
-        <path d="M630.981 79.4935C630.981 50.6366 652.429 28.9352 677.248 28.9352C698.695 28.9352 714.68 44.9044 719.162 63.9552H705.988C702.198 51.7726 692.383 41.1309 677.248 41.1309C659.578 41.1309 643.881 56.8128 643.881 79.5066C643.881 102.2 659.578 117.882 677.248 117.882C692.814 117.882 702.76 107.24 706.694 95.1885H719.868C715.242 113.952 699.257 130.065 677.248 130.065C652.429 130.065 630.981 108.35 630.981 79.5066V79.4935Z" fill="#0A0A26"/>
-        <path d="M730.102 93.2298C730.102 72.364 745.524 56.5385 764.175 56.5385C782.825 56.5385 798.247 72.364 798.247 93.2298C798.247 114.095 782.681 130.065 764.175 130.065C745.668 130.065 730.102 114.239 730.102 93.2298ZM786.04 93.2298C786.04 78.0962 776.081 67.8723 764.175 67.8723C752.268 67.8723 742.165 78.0962 742.165 93.2298C742.165 108.363 752.255 118.718 764.175 118.718C776.094 118.718 786.04 108.494 786.04 93.2298Z" fill="#0A0A26"/>
-        <path d="M808.481 93.2298C808.481 71.659 823.341 56.5385 841.011 56.5385C852.225 56.5385 860.354 63.8246 862.315 66.6188H863.021V30.476H875.084V128.524H866.105L863.439 119.697H862.733C860.629 122.505 852.499 130.065 840.998 130.065C823.328 130.065 808.468 114.801 808.468 93.2298H808.481ZM863.007 93.2298C863.007 78.0963 853.192 67.8724 841.704 67.8724C830.216 67.8724 820.531 78.0963 820.531 93.2298C820.531 108.363 830.346 118.718 841.704 118.718C853.061 118.718 863.007 108.494 863.007 93.2298Z" fill="#0A0A26"/>
-        <path d="M956.39 98.5441H902.831C904.648 111.288 913.064 118.992 924.696 118.992C933.113 118.992 938.576 115.205 942.079 109.604H954.561C950.352 120.246 939.138 130.052 924.553 130.052C905.484 130.052 890.48 114.644 890.48 93.2167C890.48 71.7895 905.902 56.5254 924.409 56.5254C942.915 56.5254 956.939 71.7895 956.939 91.5453C956.939 94.4833 956.795 96.8728 956.377 98.5441H956.39ZM902.7 88.6074H945.176C943.778 76.2812 935.505 67.5981 924.422 67.5981C913.339 67.5981 904.517 75.8634 902.687 88.6074H902.7Z" fill="#0A0A26"/>
-      </g>
-      <defs>
-        <clipPath id="gclip"><rect width="956.939" height="159" fill="white"/></clipPath>
-      </defs>
-    </svg>
+  <!-- NC Full Mono Reverse — all paths white -->
+  <svg class="gate-logo" viewBox="0 0 957 159" fill="none" xmlns="http://www.w3.org/2000/svg">
+    <g clip-path="url(#gclip)">
+      <path d="M229.477 89.9261H260.805C255.904 113.286 234.94 131.41 210.134 131.41C181.538 131.41 158.365 107.671 158.365 79.5063C158.365 51.3415 181.538 27.5901 210.134 27.5901C234.94 27.5901 255.904 45.7138 260.805 69.0865H229.477C226.184 60.6514 218.878 55.1934 210.134 55.1934C197.966 55.1934 188.883 65.4174 188.883 79.5063C188.883 93.5953 197.966 103.819 210.134 103.819C218.878 103.819 226.184 98.3612 229.477 89.9261Z" fill="white"/>
+      <path d="M0 128.707V30.293H22.5975L27.0411 39.9424H28.0083C30.7137 36.4691 40.5682 27.5901 55.6245 27.5901C78.9931 27.5901 95.0295 44.3819 95.0295 70.0397V128.707H64.5119V73.9047C64.5119 63.6808 57.3628 55.768 47.5213 55.768C37.6798 55.768 30.5307 63.6808 30.5307 73.9047V128.707H0Z" fill="white"/>
+      <path d="M145.622 116.355C145.622 138.735 129.782 153.02 121.483 159L116.464 152.054C120.515 147.81 125.73 141.059 127.272 131.41C118.006 130.835 111.249 123.497 111.249 114.239C111.249 104.982 118.581 97.0558 128.24 97.0558C137.898 97.0558 145.622 104.394 145.622 116.355Z" fill="white"/>
+      <path d="M145.622 47.4636C145.622 57.113 138.277 64.6471 128.436 64.6471C118.594 64.6471 111.249 57.113 111.249 47.4636C111.249 37.8142 118.581 30.2931 128.436 30.2931C138.29 30.2931 145.622 37.8272 145.622 47.4636Z" fill="white"/>
+      <path d="M304.223 0L253.303 159H282.854L333.956 0H304.223Z" fill="white"/>
+      <path d="M421.932 30.476H434.688V128.524H422.625L372.712 53.3134V128.524H359.956V30.476H372.019L421.932 105.687V30.476Z" fill="white"/>
+      <path d="M519.223 128.524L510.675 104.995H468.33L459.782 128.524H446.608L483.621 30.476H495.959L532.972 128.524H519.236H519.223ZM489.503 47.8423L472.813 93.0862H506.179L489.503 47.8423Z" fill="white"/>
+      <path d="M541.389 92.6684V30.476H554.289V92.6684C554.289 107.932 563.542 117.882 577.84 117.882C592.139 117.882 601.392 107.932 601.392 92.6684V30.476H614.292V92.6684C614.292 114.239 599.706 130.065 577.84 130.065C555.975 130.065 541.389 114.239 541.389 92.6684Z" fill="white"/>
+      <path d="M630.981 79.4935C630.981 50.6366 652.429 28.9352 677.248 28.9352C698.695 28.9352 714.68 44.9044 719.162 63.9552H705.988C702.198 51.7726 692.383 41.1309 677.248 41.1309C659.578 41.1309 643.881 56.8128 643.881 79.5066C643.881 102.2 659.578 117.882 677.248 117.882C692.814 117.882 702.76 107.24 706.694 95.1885H719.868C715.242 113.952 699.257 130.065 677.248 130.065C652.429 130.065 630.981 108.35 630.981 79.5066V79.4935Z" fill="white"/>
+      <path d="M730.102 93.2298C730.102 72.364 745.524 56.5385 764.175 56.5385C782.825 56.5385 798.247 72.364 798.247 93.2298C798.247 114.095 782.681 130.065 764.175 130.065C745.668 130.065 730.102 114.239 730.102 93.2298ZM786.04 93.2298C786.04 78.0962 776.081 67.8723 764.175 67.8723C752.268 67.8723 742.165 78.0962 742.165 93.2298C742.165 108.363 752.255 118.718 764.175 118.718C776.094 118.718 786.04 108.494 786.04 93.2298Z" fill="white"/>
+      <path d="M808.481 93.2298C808.481 71.659 823.341 56.5385 841.011 56.5385C852.225 56.5385 860.354 63.8246 862.315 66.6188H863.021V30.476H875.084V128.524H866.105L863.439 119.697H862.733C860.629 122.505 852.499 130.065 840.998 130.065C823.328 130.065 808.468 114.801 808.468 93.2298H808.481ZM863.007 93.2298C863.007 78.0963 853.192 67.8724 841.704 67.8724C830.216 67.8724 820.531 78.0963 820.531 93.2298C820.531 108.363 830.346 118.718 841.704 118.718C853.061 118.718 863.007 108.494 863.007 93.2298Z" fill="white"/>
+      <path d="M956.39 98.5441H902.831C904.648 111.288 913.064 118.992 924.696 118.992C933.113 118.992 938.576 115.205 942.079 109.604H954.561C950.352 120.246 939.138 130.052 924.553 130.052C905.484 130.052 890.48 114.644 890.48 93.2167C890.48 71.7895 905.902 56.5254 924.409 56.5254C942.915 56.5254 956.939 71.7895 956.939 91.5453C956.939 94.4833 956.795 96.8728 956.377 98.5441H956.39ZM902.7 88.6074H945.176C943.778 76.2812 935.505 67.5981 924.422 67.5981C913.339 67.5981 904.517 75.8634 902.687 88.6074H902.7Z" fill="white"/>
+    </g>
+    <defs>
+      <clipPath id="gclip"><rect width="956.939" height="159" fill="white"/></clipPath>
+    </defs>
+  </svg>
+
+  <div class="gate-divider"></div>
+
+  <div class="gate-titles">
+    <p class="gate-title-line">Báo giá Dịch vụ</p>
+    <p class="gate-title-line">Thiết kế & Phát triển Website</p>
+    <p class="gate-sublabel">Tài liệu nội bộ · Chỉ dành cho bên nhận</p>
   </div>
 
-  <p class="gate-tagline">Tài liệu nội bộ · Chỉ dành cho bên nhận</p>
-
-  <div class="gate-form">
-    <input id="gate-input" class="gate-input" type="password" placeholder="Nhập mật khẩu truy cập" autocomplete="off">
-    <button class="gate-btn" onclick="checkPassword()">Truy cập</button>
+  <div>
+    <div class="gate-input-group">
+      <input id="gate-input" class="gate-input" type="password" placeholder="Nhập mật khẩu truy cập" autocomplete="off">
+      <button class="gate-btn" onclick="checkPassword()">Truy cập</button>
+    </div>
     <p class="gate-error" id="gate-error">Mật khẩu không đúng. Vui lòng thử lại.</p>
   </div>
 </div>
@@ -1266,10 +1307,10 @@ details[open] summary::after { transform: rotate(180deg); }
           <p class="kicker">Báo Giá · 03/05/2026 · Hiệu lực 15 ngày</p>
           <h1>Thiết kế & Phát triển Website</h1>
           <div class="hero-keywords">
-            <span class="hero-kw">Lĩnh vực <span class="hero-kw-val">Event Agency</span></span>
-            <span class="hero-kw">Thời gian <span class="hero-kw-val">20–30 ngày làm việc</span></span>
-            <span class="hero-kw">Tổng giá trị <span class="hero-kw-val">115 triệu VNĐ</span></span>
-            <span class="hero-kw">Bảo hành <span class="hero-kw-val">12 tháng miễn phí</span></span>
+            <div class="hero-kw"><span class="hero-kw-label">Lĩnh vực</span><span class="hero-kw-val">Event Agency</span></div>
+            <div class="hero-kw"><span class="hero-kw-label">Thời gian</span><span class="hero-kw-val">20–30 ngày làm việc</span></div>
+            <div class="hero-kw"><span class="hero-kw-label">Tổng giá trị</span><span class="hero-kw-val">115 triệu VNĐ</span></div>
+            <div class="hero-kw"><span class="hero-kw-label">Bảo hành</span><span class="hero-kw-val">12 tháng miễn phí</span></div>
           </div>
           <div class="hero-ctas">
             <a href="#bao-gia" class="btn-primary">Xem báo giá →</a>
