@@ -522,6 +522,40 @@ h4 {
   gap: 1.5rem;
 }
 
+.split-4 {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 1rem;
+}
+
+.feature-card {
+  background: var(--surface);
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  padding: 1.25rem 1rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.4rem;
+}
+
+.feature-card-icon {
+  color: var(--orange);
+  margin-bottom: 0.25rem;
+}
+
+.feature-card-name {
+  font-weight: 600;
+  font-size: 0.95rem;
+  color: var(--ink);
+  line-height: 1.3;
+}
+
+.feature-card-desc {
+  font-size: 0.85rem;
+  color: var(--ink-3);
+  line-height: 1.5;
+}
+
 .card {
   background: var(--surface);
   border: 1px solid var(--line);
@@ -568,39 +602,69 @@ h4 {
 .spine .tbl tbody tr:hover { background: rgba(255,255,255,0.04); }
 
 /* ── Pricing Cards ── */
-.payment-card {
-  background: var(--surface);
-  border: 1px solid var(--line);
-  border-radius: var(--radius-lg);
-  padding: 1.75rem;
-  box-shadow: var(--shadow-2);
+.payment-timeline {
+  margin-top: 0.5rem;
+  padding: 1.5rem 0 0.5rem;
 }
 
-.payment-percent {
-  font-size: 2.5rem;
-  font-weight: 700;
-  letter-spacing: -0.04em;
-  color: var(--orange);
-  line-height: 1;
-  margin-bottom: 0.25rem;
+.payment-timeline-track {
+  position: relative;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 1.25rem;
 }
 
-.payment-amount {
+.payment-timeline-line {
+  position: absolute;
+  left: 0;
+  right: 0;
+  height: 1px;
+  background: var(--line-2);
+  top: 50%;
+  transform: translateY(-50%);
+}
+
+.payment-timeline-dot {
+  width: 14px;
+  height: 14px;
+  border-radius: 50%;
+  background: var(--orange);
+  border: 3px solid var(--bg);
+  outline: 2px solid var(--orange);
+  position: relative;
+  z-index: 1;
+  flex-shrink: 0;
+}
+
+.payment-timeline-items {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+}
+
+.payment-timeline-item { padding-right: 2rem; }
+.payment-timeline-item:last-child { padding-right: 0; text-align: right; }
+
+.ptl-title {
+  font-weight: 600;
+  font-size: 0.95rem;
+  color: var(--ink);
+  margin-bottom: 0.3rem;
+}
+
+.ptl-amount {
+  font-size: 0.85rem;
+  color: var(--ink-3);
+  margin-bottom: 0.2rem;
+}
+
+.ptl-amount span {
   font-family: var(--mono);
-  font-size: 1rem;
   color: var(--ink-2);
   font-weight: 500;
-  margin-bottom: 0.75rem;
 }
 
-.payment-label {
-  font-weight: 600;
-  font-size: 1rem;
-  color: var(--ink);
-  margin-bottom: 0.25rem;
-}
-
-.payment-cond {
+.ptl-cond {
   font-size: 0.8rem;
   color: var(--ink-4);
 }
@@ -1080,6 +1144,7 @@ details[open] summary::after { transform: rotate(180deg); }
   .hero-grid { grid-template-columns: 1fr; gap: 2.5rem; }
   .numbers-strip-outer { padding: 0 1.25rem; }
   .numbers-strip { grid-template-columns: 1fr 1fr; }
+  .split-4 { grid-template-columns: 1fr 1fr; }
   .num-cell:nth-child(2) { border-right: none; }
   .num-cell:nth-child(3) { border-top: 1px solid var(--line); }
   .num-cell:nth-child(4) { border-top: 1px solid var(--line); border-right: none; }
@@ -1097,6 +1162,7 @@ details[open] summary::after { transform: rotate(180deg); }
   .hero { padding: 3rem 0; }
   .numbers-strip-outer { padding: 0 1.25rem; }
   .numbers-strip { grid-template-columns: 1fr; }
+  .split-4 { grid-template-columns: 1fr 1fr; }
   .num-cell { border-right: none !important; border-top: 1px solid var(--line); }
   .num-cell:first-child { border-top: none; }
   .portfolio-card { flex: 0 0 100%; }
@@ -1311,62 +1377,93 @@ details[open] summary::after { transform: rotate(180deg); }
         </table>
       </div>
 
-      <ul class="inline-feature-list">
-        <li>Dark/Light Mode</li>
-        <li>VI/EN</li>
-        <li>Responsive</li>
-        <li>SEO On-page</li>
-        <li>Lazy Loading</li>
-        <li>Page Transition</li>
-        <li>Scroll Animation</li>
-      </ul>
+      <div class="split-4" style="margin-top:1.25rem;">
+        <div class="feature-card">
+          <div class="feature-card-icon">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round">
+              <circle cx="12" cy="12" r="5"/>
+              <path d="M12 1v2M12 21v2M4.22 4.22l1.42 1.42M18.36 18.36l1.42 1.42M1 12h2M21 12h2M4.22 19.78l1.42-1.42M18.36 5.64l1.42-1.42"/>
+              <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z" stroke-dasharray="0" display="none"/>
+            </svg>
+          </div>
+          <div class="feature-card-name">Dark / Light Mode</div>
+          <div class="feature-card-desc">Chuyển đổi giao diện sáng tối</div>
+        </div>
+
+        <div class="feature-card">
+          <div class="feature-card-icon">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round">
+              <circle cx="12" cy="12" r="10"/>
+              <line x1="2" y1="12" x2="22" y2="12"/>
+              <path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/>
+            </svg>
+          </div>
+          <div class="feature-card-name">Song ngữ VI / EN</div>
+          <div class="feature-card-desc">Toàn bộ nội dung hỗ trợ 2 ngôn ngữ</div>
+        </div>
+
+        <div class="feature-card">
+          <div class="feature-card-icon">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round">
+              <rect x="2" y="3" width="20" height="14" rx="2"/>
+              <path d="M8 21h8M12 17v4"/>
+              <rect x="14" y="8" width="5" height="7" rx="1"/>
+            </svg>
+          </div>
+          <div class="feature-card-name">Responsive</div>
+          <div class="feature-card-desc">Hiển thị chuẩn trên mọi thiết bị</div>
+        </div>
+
+        <div class="feature-card">
+          <div class="feature-card-icon">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round">
+              <circle cx="11" cy="11" r="8"/>
+              <line x1="21" y1="21" x2="16.65" y2="16.65"/>
+            </svg>
+          </div>
+          <div class="feature-card-name">SEO On-page</div>
+          <div class="feature-card-desc">Meta tags, Open Graph, sitemap, robots.txt</div>
+        </div>
+      </div>
 
       <!-- 4b. CMS -->
       <p class="sub-section-title">CMS — Hệ thống Quản trị</p>
 
-      <div class="split-2">
-        <div class="card">
-          <div class="card-icon">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="3" y="3" width="7" height="7" rx="1"/><rect x="14" y="3" width="7" height="7" rx="1"/><rect x="3" y="14" width="7" height="7" rx="1"/><rect x="14" y="14" width="7" height="7" rx="1"/></svg>
-          </div>
-          <h4>Quản lý Dự án / Portfolio</h4>
-          <p style="font-size:0.875rem;color:var(--ink-3);margin-top:0.25rem;">Thêm, sửa, xóa dự án; upload ảnh/video; phân loại danh mục; bật/tắt hiển thị</p>
-        </div>
-        <div class="card">
-          <div class="card-icon">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M9 5H7a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V7a2 2 0 0 0-2-2h-2"/><rect x="9" y="3" width="6" height="4" rx="1"/></svg>
-          </div>
-          <h4>Quản lý Dịch vụ</h4>
-          <p style="font-size:0.875rem;color:var(--ink-3);margin-top:0.25rem;">Chỉnh nội dung, liên kết dự án liên quan</p>
-        </div>
-        <div class="card">
-          <div class="card-icon">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M12 20h9"/><path d="M16.5 3.5a2.121 2.121 0 0 1 3 3L7 19l-4 1 1-4L16.5 3.5z"/></svg>
-          </div>
-          <h4>Quản lý Blog / Tin tức</h4>
-          <p style="font-size:0.875rem;color:var(--ink-3);margin-top:0.25rem;">Soạn thảo rich text, hẹn giờ đăng, quản lý draft/published</p>
-        </div>
-        <div class="card">
-          <div class="card-icon">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><polyline points="21 15 16 10 5 21"/></svg>
-          </div>
-          <h4>Quản lý Media</h4>
-          <p style="font-size:0.875rem;color:var(--ink-3);margin-top:0.25rem;">Thư viện ảnh & video tập trung, upload hàng loạt</p>
-        </div>
-        <div class="card">
-          <div class="card-icon">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.69 12a19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 3.6 1.18h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L7.91 8.18a16 16 0 0 0 6 6l.95-.95a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7a2 2 0 0 1 1.72 2z"/></svg>
-          </div>
-          <h4>Quản lý Liên hệ</h4>
-          <p style="font-size:0.875rem;color:var(--ink-3);margin-top:0.25rem;">Xem, export danh sách form submissions</p>
-        </div>
-        <div class="card">
-          <div class="card-icon">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="12" cy="12" r="3"/><path d="M19.07 4.93l-1.41 1.41M4.93 19.07l1.41-1.41M4.93 4.93l1.41 1.41M19.07 19.07l-1.41-1.41M12 2v2M12 20v2M2 12h2M20 12h2"/></svg>
-          </div>
-          <h4>Phân quyền & Cài đặt</h4>
-          <p style="font-size:0.875rem;color:var(--ink-3);margin-top:0.25rem;">Tạo tài khoản, phân quyền Admin/Editor, SEO mặc định</p>
-        </div>
+      <div class="tbl-wrap">
+        <table class="tbl">
+          <thead>
+            <tr>
+              <th style="width:220px;">Phân hệ</th>
+              <th>Tính năng</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td><strong>Quản lý Dự án / Portfolio</strong></td>
+              <td>Thêm, sửa, xóa dự án; upload ảnh/video; phân loại danh mục; sắp xếp thứ tự hiển thị; bật/tắt hiển thị</td>
+            </tr>
+            <tr>
+              <td><strong>Quản lý Dịch vụ</strong></td>
+              <td>Thêm, sửa, xóa dịch vụ; chỉnh nội dung mô tả; liên kết dự án liên quan</td>
+            </tr>
+            <tr>
+              <td><strong>Quản lý Blog / Tin tức</strong></td>
+              <td>Soạn thảo bài viết rich text; phân loại tag/category; hẹn giờ đăng bài; quản lý trạng thái draft/published</td>
+            </tr>
+            <tr>
+              <td><strong>Quản lý Media</strong></td>
+              <td>Thư viện ảnh & video tập trung; upload hàng loạt; tổ chức thư mục</td>
+            </tr>
+            <tr>
+              <td><strong>Quản lý Liên hệ</strong></td>
+              <td>Xem, export danh sách khách hàng đã gửi form; đánh dấu đã xử lý</td>
+            </tr>
+            <tr>
+              <td><strong>Phân quyền & Cài đặt</strong></td>
+              <td>Tạo tài khoản quản trị; phân quyền Admin/Editor; cấu hình thông tin liên hệ, địa chỉ, mạng xã hội; SEO mặc định</td>
+            </tr>
+          </tbody>
+        </table>
       </div>
     </div>
   </section>
@@ -1404,16 +1501,10 @@ details[open] summary::after { transform: rotate(180deg); }
               <td>Tùy đuôi .com / .vn</td>
             </tr>
             <tr>
-              <td><strong>Hosting / Cloud + SSL</strong></td>
-              <td>AWS (SSL miễn phí qua ACM)</td>
-              <td>4.000.000 – 10.000.000 VNĐ</td>
-              <td>Khuyến nghị AWS Lightsail hoặc EC2</td>
-            </tr>
-            <tr>
-              <td><strong>CDN</strong></td>
-              <td>Cloudflare (Free tier)</td>
-              <td>Miễn phí</td>
-              <td>Tốc độ tải toàn cầu, bảo vệ DDoS</td>
+              <td><strong>Hosting + SSL + CDN</strong></td>
+              <td>Hostinger Business</td>
+              <td>1.500.000 VNĐ/năm</td>
+              <td>SSL và CDN cơ bản đã bao gồm trong gói, không cần cấu hình thêm</td>
             </tr>
           </tbody>
         </table>
@@ -1422,64 +1513,70 @@ details[open] summary::after { transform: rotate(180deg); }
       <!-- 5b. Thiết kế & Phát triển -->
       <p class="sub-section-title">Chi phí Thiết kế & Phát triển</p>
 
-      <div class="spine">
-        <h3>Bảng giá trọn gói</h3>
-        <p>Toàn bộ 9 trang giao diện, hệ thống CMS đầy đủ và triển khai production.</p>
-        <div class="tbl-wrap">
-          <table class="tbl">
-            <thead>
-              <tr>
-                <th>Hạng mục</th>
-                <th>Mô tả</th>
-                <th style="text-align:right;white-space:nowrap;">Chi phí (VNĐ)</th>
-              </tr>
-            </thead>
-            <tbody>
-              <tr>
-                <td><strong style="color:#fff;">Thiết kế UI/UX</strong></td>
-                <td style="color:rgba(255,255,255,0.6);">Custom 100% toàn bộ 9 trang; Design System; prototype; Dark & Light mode; responsive 3 breakpoints</td>
-                <td style="text-align:right;font-family:var(--mono);color:rgba(255,255,255,0.8);">20.000.000</td>
-              </tr>
-              <tr>
-                <td><strong style="color:#fff;">Lập trình Frontend</strong></td>
-                <td style="color:rgba(255,255,255,0.6);">Motion/scroll animation; chuyển trang; VI/EN; Dark/Light; SEO & tốc độ</td>
-                <td style="text-align:right;font-family:var(--mono);color:rgba(255,255,255,0.8);">40.000.000</td>
-              </tr>
-              <tr>
-                <td><strong style="color:#fff;">Lập trình Backend & CMS</strong></td>
-                <td style="color:rgba(255,255,255,0.6);">CMS đầy đủ; REST API; phân quyền; media; form liên hệ</td>
-                <td style="text-align:right;font-family:var(--mono);color:rgba(255,255,255,0.8);">55.000.000</td>
-              </tr>
-              <tr>
-                <td><strong style="color:#fff;">Kiểm thử & Triển khai</strong></td>
-                <td style="color:rgba(255,255,255,0.6);">QA; hosting/domain/SSL; deploy production; bàn giao tài liệu</td>
-                <td style="text-align:right;font-family:var(--mono);color:rgba(255,255,255,0.8);">5.000.000</td>
-              </tr>
-              <tr class="row-total">
-                <td><strong>TỔNG CỘNG</strong></td>
-                <td></td>
-                <td style="text-align:right;font-family:var(--mono);font-size:1.1rem;"><strong>120.000.000 VNĐ</strong></td>
-              </tr>
-            </tbody>
-          </table>
-        </div>
+      <div class="tbl-wrap">
+        <table class="tbl">
+          <thead>
+            <tr>
+              <th style="width:200px;">Hạng mục</th>
+              <th>Mô tả</th>
+              <th style="text-align:right;white-space:nowrap;width:160px;">Chi phí (VNĐ)</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td><strong>Thiết kế UI/UX</strong></td>
+              <td>Custom 100% toàn bộ 9 trang; Design System; prototype; Dark & Light mode; responsive 3 breakpoints</td>
+              <td style="text-align:right;font-family:var(--mono);">20.000.000</td>
+            </tr>
+            <tr>
+              <td><strong>Lập trình Frontend</strong></td>
+              <td>Motion/scroll animation; chuyển trang; VI/EN; Dark/Light; SEO & tốc độ</td>
+              <td style="text-align:right;font-family:var(--mono);">50.000.000</td>
+            </tr>
+            <tr>
+              <td><strong>Lập trình Backend & CMS</strong></td>
+              <td>CMS đầy đủ; REST API; phân quyền; media; form liên hệ; MySQL</td>
+              <td style="text-align:right;font-family:var(--mono);">40.000.000</td>
+            </tr>
+            <tr>
+              <td><strong>Kiểm thử & Triển khai</strong></td>
+              <td>QA; cấu hình hosting/domain/SSL; deploy production; bàn giao tài liệu</td>
+              <td style="text-align:right;font-family:var(--mono);">5.000.000</td>
+            </tr>
+            <tr style="color:var(--ink-4);font-style:italic;">
+              <td>VAT</td>
+              <td>Không chịu thuế</td>
+              <td style="text-align:right;font-family:var(--mono);">—</td>
+            </tr>
+            <tr class="row-total">
+              <td><strong>TỔNG GIÁ TRỊ THANH TOÁN</strong></td>
+              <td></td>
+              <td style="text-align:right;font-family:var(--mono);font-size:1.05rem;"><strong>115.000.000 VNĐ</strong></td>
+            </tr>
+          </tbody>
+        </table>
       </div>
 
       <!-- 5c. Tiến độ thanh toán -->
       <p class="sub-section-title">Tiến độ thanh toán</p>
 
-      <div class="split-2">
-        <div class="payment-card">
-          <div class="payment-percent">70%</div>
-          <div class="payment-amount">84.000.000 VNĐ</div>
-          <div class="payment-label">Đặt cọc khởi động</div>
-          <div class="payment-cond">Điều kiện: Ký hợp đồng</div>
+      <div class="payment-timeline">
+        <div class="payment-timeline-track">
+          <div class="payment-timeline-line"></div>
+          <div class="payment-timeline-dot"></div>
+          <div class="payment-timeline-dot"></div>
         </div>
-        <div class="payment-card" style="border-color:var(--orange);background:var(--orange-soft);">
-          <div class="payment-percent">30%</div>
-          <div class="payment-amount">36.000.000 VNĐ</div>
-          <div class="payment-label">Nghiệm thu & Go-live</div>
-          <div class="payment-cond">Điều kiện: Website chạy chính thức trên production</div>
+        <div class="payment-timeline-items">
+          <div class="payment-timeline-item">
+            <div class="ptl-title">Đặt cọc khởi động</div>
+            <div class="ptl-amount">70% · <span>88.500.000 VNĐ</span></div>
+            <div class="ptl-cond">Điều kiện: Ký hợp đồng chính thức</div>
+          </div>
+          <div class="payment-timeline-item">
+            <div class="ptl-title">Nghiệm thu & Go-live</div>
+            <div class="ptl-amount">30% · <span>34.500.000 VNĐ</span></div>
+            <div class="ptl-cond">Điều kiện: Website hoàn thành nghiệm thu</div>
+          </div>
         </div>
       </div>
 
@@ -1958,7 +2055,7 @@ details[open] summary::after { transform: rotate(180deg); }
   var main  = document.getElementById('main');
 
   window.checkPassword = function() {
-    if (input.value === 'nc-viet-tu-2026') {
+    if (input.value === 'nc') {
       gate.classList.add('hidden');
       main.classList.add('visible');
     } else {
