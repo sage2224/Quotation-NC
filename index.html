@@ -289,6 +289,25 @@ h4 {
   text-transform: uppercase;
 }
 
+.hero-keywords {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem 1.75rem;
+  margin-top: 1.5rem;
+}
+
+.hero-kw {
+  font-size: 0.82rem;
+  color: var(--ink-5);
+  letter-spacing: 0.01em;
+}
+
+.hero-kw-val {
+  color: var(--ink-4);
+  font-weight: 500;
+  margin-left: 0.35rem;
+}
+
 .hero-ctas {
   display: flex;
   gap: 0.75rem;
@@ -353,17 +372,25 @@ h4 {
 .meta-value em { font-style: normal; color: var(--orange); font-weight: 600; }
 
 /* ── Numbers Strip ── */
+.numbers-strip-outer {
+  border-bottom: 1px solid var(--line);
+  padding: 0 2rem;
+}
+
 .numbers-strip {
+  max-width: 1200px;
+  margin: 0 auto;
   display: grid;
   grid-template-columns: repeat(4, 1fr);
-  border-bottom: 1px solid var(--line);
 }
 
 .num-cell {
-  padding: 2.5rem 2rem;
+  padding: 2.5rem 1.5rem;
   border-right: 1px solid var(--line);
   display: flex;
   flex-direction: column;
+  align-items: center;
+  text-align: center;
   gap: 0.35rem;
 }
 .num-cell:last-child { border-right: none; }
@@ -387,6 +414,29 @@ h4 {
   font-size: 0.8rem;
   color: var(--ink-5);
   margin-top: 0.1rem;
+}
+
+.inline-feature-list {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 0.45rem;
+  margin-top: 1rem;
+  padding-left: 0;
+}
+
+.inline-feature-list li {
+  font-size: 0.875rem;
+  color: var(--ink-3);
+  padding-left: 1rem;
+  position: relative;
+}
+
+.inline-feature-list li::before {
+  content: '–';
+  position: absolute;
+  left: 0;
+  color: var(--ink-5);
 }
 
 /* ── Table ── */
@@ -1028,6 +1078,7 @@ details[open] summary::after { transform: rotate(180deg); }
 /* ── Responsive ── */
 @media (max-width: 880px) {
   .hero-grid { grid-template-columns: 1fr; gap: 2.5rem; }
+  .numbers-strip-outer { padding: 0 1.25rem; }
   .numbers-strip { grid-template-columns: 1fr 1fr; }
   .num-cell:nth-child(2) { border-right: none; }
   .num-cell:nth-child(3) { border-top: 1px solid var(--line); }
@@ -1044,6 +1095,7 @@ details[open] summary::after { transform: rotate(180deg); }
   .wrap { padding: 0 1.25rem; }
   .section { padding: 3rem 0; }
   .hero { padding: 3rem 0; }
+  .numbers-strip-outer { padding: 0 1.25rem; }
   .numbers-strip { grid-template-columns: 1fr; }
   .num-cell { border-right: none !important; border-top: 1px solid var(--line); }
   .num-cell:first-child { border-top: none; }
@@ -1141,8 +1193,13 @@ details[open] summary::after { transform: rotate(180deg); }
         <!-- Left -->
         <div>
           <p class="kicker">Báo Giá · 03/05/2026 · Hiệu lực 15 ngày</p>
-          <h1>Thiết kế & Phát triển<br>Website Định Vị<br><em>Thương Hiệu.</em></h1>
-          <p class="section-lede" style="margin-top:1.5rem;">NAUCode đề xuất giải pháp website profile hoàn toàn Custom — không template, không compromise — cho Event Agency dẫn đầu thị trường sáng tạo Việt Nam.</p>
+          <h1>Thiết kế & Phát triển Website</h1>
+          <div class="hero-keywords">
+            <span class="hero-kw">Lĩnh vực <span class="hero-kw-val">Event Agency</span></span>
+            <span class="hero-kw">Thời gian <span class="hero-kw-val">20–30 ngày làm việc</span></span>
+            <span class="hero-kw">Tổng giá trị <span class="hero-kw-val">120 triệu VNĐ</span></span>
+            <span class="hero-kw">Bảo hành <span class="hero-kw-val">12 tháng miễn phí</span></span>
+          </div>
           <div class="hero-ctas">
             <a href="#bao-gia" class="btn-primary">Xem báo giá →</a>
             <button class="btn-ghost" disabled title="Tính năng sắp ra mắt">
@@ -1183,29 +1240,6 @@ details[open] summary::after { transform: rotate(180deg); }
     </div>
   </section>
 
-  <!-- ── NUMBERS STRIP ── -->
-  <div class="numbers-strip">
-    <div class="num-cell">
-      <div class="num-label">Tổng giá trị</div>
-      <div class="num-value" style="color:var(--orange);">120.000.000 VNĐ</div>
-      <div class="num-desc">Trọn gói thiết kế + lập trình</div>
-    </div>
-    <div class="num-cell">
-      <div class="num-label">Thời gian</div>
-      <div class="num-value">20–30 ngày</div>
-      <div class="num-desc">Kể từ ngày nhận đủ tài liệu</div>
-    </div>
-    <div class="num-cell">
-      <div class="num-label">Bảo hành</div>
-      <div class="num-value">12 tháng</div>
-      <div class="num-desc">Miễn phí, sửa lỗi kỹ thuật</div>
-    </div>
-    <div class="num-cell">
-      <div class="num-label">Trang giao diện</div>
-      <div class="num-value">9 trang</div>
-      <div class="num-desc">Custom 100%</div>
-    </div>
-  </div>
 
   <!-- ══════════════════════════════════════
        SECTION 4: PHẠM VI
@@ -1213,7 +1247,7 @@ details[open] summary::after { transform: rotate(180deg); }
   <section class="section" id="pham-vi">
     <div class="wrap">
       <p class="section-label">Phạm vi công việc</p>
-      <h2>Những gì <em>NAUCode</em> sẽ thực hiện</h2>
+      <h2>Các tính năng website <em>sẽ thực hiện</em></h2>
 
       <!-- 4a. Frontend -->
       <p class="sub-section-title">Frontend — Các trang giao diện</p>
@@ -1277,18 +1311,15 @@ details[open] summary::after { transform: rotate(180deg); }
         </table>
       </div>
 
-      <div class="callout">
-        <strong>Tính năng xuyên suốt toàn website:</strong>
-        <div class="pills">
-          <span class="pill">Dark/Light Mode</span>
-          <span class="pill">VI/EN</span>
-          <span class="pill">Responsive</span>
-          <span class="pill">SEO On-page</span>
-          <span class="pill">Lazy Loading</span>
-          <span class="pill">Page Transition</span>
-          <span class="pill">Scroll Animation</span>
-        </div>
-      </div>
+      <ul class="inline-feature-list">
+        <li>Dark/Light Mode</li>
+        <li>VI/EN</li>
+        <li>Responsive</li>
+        <li>SEO On-page</li>
+        <li>Lazy Loading</li>
+        <li>Page Transition</li>
+        <li>Scroll Animation</li>
+      </ul>
 
       <!-- 4b. CMS -->
       <p class="sub-section-title">CMS — Hệ thống Quản trị</p>
