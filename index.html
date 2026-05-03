@@ -190,17 +190,14 @@ img { display: block; max-width: 100%; }
 .nav-links a:hover { color: var(--ink); background: var(--surface-2); }
 .nav-links a.active { color: var(--orange); }
 
-.nav-cta {
+.nav-contact-email {
   flex-shrink: 0;
-  background: var(--ink);
-  color: var(--bg) !important;
-  padding: 0.5rem 1.1rem !important;
-  border-radius: 999px !important;
-  font-weight: 600 !important;
-  font-size: 0.82rem !important;
-  transition: background 0.2s !important;
+  font-size: 0.82rem;
+  color: var(--ink-3);
+  font-family: var(--mono);
+  transition: color 0.15s;
 }
-.nav-cta:hover { background: var(--ink-2) !important; color: var(--bg) !important; }
+.nav-contact-email:hover { color: var(--orange); }
 
 /* ── Layout Container ── */
 .wrap {
@@ -1091,7 +1088,7 @@ details[open] summary::after { transform: rotate(180deg); }
 .portal-footer {
   background: var(--surface);
   border-top: 1px solid var(--line);
-  padding: 2rem 0;
+  padding: 2.5rem 0;
 }
 
 .portal-footer-inner {
@@ -1101,24 +1098,33 @@ details[open] summary::after { transform: rotate(180deg); }
   display: flex;
   align-items: center;
   justify-content: space-between;
-  gap: 1.5rem;
+  gap: 2rem;
 }
 
 .footer-left {
-  font-size: 0.8rem;
-  color: var(--ink-4);
-}
-
-.footer-right {
-  font-size: 0.8rem;
-  color: var(--ink-4);
-  text-align: right;
   display: flex;
   flex-direction: column;
-  gap: 0.2rem;
 }
-.footer-right a { color: var(--ink-3); transition: color 0.15s; }
-.footer-right a:hover { color: var(--orange); }
+
+.footer-contact {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  gap: 0.5rem;
+}
+
+.footer-contact-label {
+  font-size: 0.82rem;
+  color: var(--ink-4);
+  margin-bottom: 0.1rem;
+}
+
+.footer-contact-sub {
+  font-size: 0.78rem;
+  color: var(--ink-5);
+}
+.footer-contact-sub a { color: var(--ink-4); transition: color 0.15s; }
+.footer-contact-sub a:hover { color: var(--orange); }
 
 /* ── Section subheadings ── */
 .sub-section-title {
@@ -1167,7 +1173,7 @@ details[open] summary::after { transform: rotate(180deg); }
   .num-cell:first-child { border-top: none; }
   .portfolio-card { flex: 0 0 100%; }
   .portal-footer-inner { flex-direction: column; text-align: center; }
-  .footer-right { text-align: center; }
+  .footer-contact { align-items: center; }
   .topnav-inner { padding: 0 1.25rem; }
 }
 </style>
@@ -1222,7 +1228,6 @@ details[open] summary::after { transform: rotate(180deg); }
     <a class="toc-item" href="#bao-hanh"><span class="toc-tick"></span><span class="toc-label">Bảo hành</span></a>
     <a class="toc-item" href="#style-ref"><span class="toc-tick"></span><span class="toc-label">Style Ref</span></a>
     <a class="toc-item" href="#portfolio"><span class="toc-tick"></span><span class="toc-label">Portfolio</span></a>
-    <a class="toc-item" href="#ban-giao"><span class="toc-tick"></span><span class="toc-label">Bàn giao</span></a>
   </nav>
 
   <!-- ── STICKY NAV ── -->
@@ -1248,7 +1253,7 @@ details[open] summary::after { transform: rotate(180deg); }
         <a href="#portfolio">Portfolio</a>
       </nav>
 
-      <a href="mailto:hello@naucode.vn" class="nav-links nav-cta">Liên hệ NAUCode</a>
+      <a href="mailto:solutions@naucode.com" class="nav-contact-email">solutions@naucode.com</a>
     </div>
   </header>
 
@@ -1263,45 +1268,14 @@ details[open] summary::after { transform: rotate(180deg); }
           <div class="hero-keywords">
             <span class="hero-kw">Lĩnh vực <span class="hero-kw-val">Event Agency</span></span>
             <span class="hero-kw">Thời gian <span class="hero-kw-val">20–30 ngày làm việc</span></span>
-            <span class="hero-kw">Tổng giá trị <span class="hero-kw-val">120 triệu VNĐ</span></span>
+            <span class="hero-kw">Tổng giá trị <span class="hero-kw-val">115 triệu VNĐ</span></span>
             <span class="hero-kw">Bảo hành <span class="hero-kw-val">12 tháng miễn phí</span></span>
           </div>
           <div class="hero-ctas">
             <a href="#bao-gia" class="btn-primary">Xem báo giá →</a>
-            <button class="btn-ghost" disabled title="Tính năng sắp ra mắt">
-              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
-              Tải về PDF
-            </button>
           </div>
         </div>
 
-        <!-- Right meta card -->
-        <div class="hero-side">
-          <div class="meta-row">
-            <span class="meta-label">Dự án</span>
-            <span class="meta-value">Thiết kế và phát triển website</span>
-          </div>
-          <div class="meta-row">
-            <span class="meta-label">Lĩnh vực</span>
-            <span class="meta-value">Event Agency</span>
-          </div>
-          <div class="meta-row">
-            <span class="meta-label">Đơn vị thực hiện</span>
-            <span class="meta-value">NAUCode</span>
-          </div>
-          <div class="meta-row">
-            <span class="meta-label">Thời gian</span>
-            <span class="meta-value">20–30 ngày làm việc</span>
-          </div>
-          <div class="meta-row">
-            <span class="meta-label">Tổng giá trị</span>
-            <span class="meta-value"><em>120.000.000 VNĐ</em></span>
-          </div>
-          <div class="meta-row">
-            <span class="meta-label">Bảo hành</span>
-            <span class="meta-value">12 tháng miễn phí</span>
-          </div>
-        </div>
       </div>
     </div>
   </section>
@@ -1615,14 +1589,14 @@ details[open] summary::after { transform: rotate(180deg); }
       <h2>Bảo hành & <em>Bảo trì</em></h2>
 
       <!-- 6a. Bảo hành -->
-      <div class="warranty-hero">
-        <div class="warranty-badge">
-          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
-          Bảo hành chính hãng
-        </div>
-        <h3>12 tháng bảo hành miễn phí</h3>
-        <p>Sửa lỗi kỹ thuật phát sinh từ quá trình phát triển; xử lý sự cố source code; phản hồi trong 24 giờ làm việc.</p>
-        <p class="warranty-note">Không bao gồm lỗi do thay đổi nội dung phía khách hàng, cập nhật hạ tầng bên thứ ba, hoặc yêu cầu tính năng mới.</p>
+      <div class="callout" style="background:var(--orange-soft);border-color:rgba(255,98,65,0.25);margin-bottom:2rem;">
+        <div style="font-weight:600;font-size:1.1rem;color:var(--ink);margin-bottom:0.75rem;">12 tháng bảo hành miễn phí</div>
+        <ul style="list-style:none;display:flex;flex-direction:column;gap:0.45rem;padding:0;">
+          <li style="font-size:0.875rem;color:var(--ink-2);padding-left:1rem;position:relative;"><span style="position:absolute;left:0;color:var(--orange);">–</span>Sửa các lỗi kỹ thuật và lỗi tính năng phát sinh từ quá trình phát triển</li>
+          <li style="font-size:0.875rem;color:var(--ink-2);padding-left:1rem;position:relative;"><span style="position:absolute;left:0;color:var(--orange);">–</span>Hỗ trợ xử lý sự cố kỹ thuật liên quan đến source code bàn giao</li>
+          <li style="font-size:0.875rem;color:var(--ink-2);padding-left:1rem;position:relative;"><span style="position:absolute;left:0;color:var(--orange);">–</span>Thời gian phản hồi trong vòng 24 giờ làm việc kể từ khi nhận báo lỗi</li>
+        </ul>
+        <p style="font-size:0.85rem;color:var(--ink-4);margin-top:0.85rem;padding-top:0.85rem;border-top:1px solid rgba(255,98,65,0.2);">Không bao gồm lỗi phát sinh do thay đổi nội dung phía khách hàng, cập nhật hạ tầng bên thứ ba, hoặc yêu cầu phát triển tính năng mới.</p>
       </div>
 
       <!-- 6b. Gói bảo trì -->
@@ -1936,110 +1910,28 @@ details[open] summary::after { transform: rotate(180deg); }
   <!-- ══════════════════════════════════════
        SECTION 9: BÀN GIAO & TIMELINE
   ══════════════════════════════════════ -->
-  <section class="section" id="ban-giao">
-    <div class="wrap">
-      <p class="section-label">Cam kết thực hiện</p>
-      <h2>Hồ sơ bàn giao & <em>Timeline</em></h2>
-
-      <div class="split-2" style="margin-top:2.5rem;">
-        <!-- Timeline -->
-        <div>
-          <h3 style="margin-bottom:1.5rem;">Tiến độ thực hiện — 20–30 ngày</h3>
-          <div class="timeline">
-            <div class="timeline-item">
-              <div class="timeline-dot"><div class="timeline-dot-inner"></div></div>
-              <div class="timeline-content">
-                <div class="timeline-phase">Ngày 1–3</div>
-                <h4>Nhận tài liệu & Kickoff</h4>
-                <p>Nhận Brand Guideline, hình ảnh, video, nội dung đặc tả. Họp kickoff, xác nhận yêu cầu.</p>
-              </div>
-            </div>
-            <div class="timeline-item">
-              <div class="timeline-dot"><div class="timeline-dot-inner"></div></div>
-              <div class="timeline-content">
-                <div class="timeline-phase">Ngày 4–10</div>
-                <h4>Thiết kế UI/UX</h4>
-                <p>03 concept design, prototype interactive, duyệt thiết kế trước khi lập trình.</p>
-              </div>
-            </div>
-            <div class="timeline-item">
-              <div class="timeline-dot"><div class="timeline-dot-inner"></div></div>
-              <div class="timeline-content">
-                <div class="timeline-phase">Ngày 11–22</div>
-                <h4>Lập trình Frontend & Backend</h4>
-                <p>Phát triển cuốn chiếu các trang, tích hợp CMS, animation & responsive.</p>
-              </div>
-            </div>
-            <div class="timeline-item">
-              <div class="timeline-dot"><div class="timeline-dot-inner"></div></div>
-              <div class="timeline-content">
-                <div class="timeline-phase">Ngày 23–28</div>
-                <h4>QA & Kiểm thử</h4>
-                <p>Kiểm tra đa thiết bị, tối ưu tốc độ, SEO audit, fix lỗi.</p>
-              </div>
-            </div>
-            <div class="timeline-item">
-              <div class="timeline-dot"><div class="timeline-dot-inner"></div></div>
-              <div class="timeline-content">
-                <div class="timeline-phase">Ngày 29–30</div>
-                <h4>Deploy & Bàn giao</h4>
-                <p>Deploy production, training CMS, bàn giao hồ sơ đầy đủ.</p>
-              </div>
-            </div>
-          </div>
-        </div>
-
-        <!-- Handover -->
-        <div>
-          <h3 style="margin-bottom:1rem;">Hồ sơ bàn giao</h3>
-          <p style="font-size:0.875rem;color:var(--ink-3);margin-bottom:1rem;">Toàn bộ tài sản kỹ thuật số thuộc về khách hàng sau khi thanh toán hoàn tất.</p>
-          <ul class="handover-list">
-            <li>
-              <span class="handover-check"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg></span>
-              Source Code đầy đủ (Frontend + Backend + CMS)
-            </li>
-            <li>
-              <span class="handover-check"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg></span>
-              Database (cấu trúc + dữ liệu mẫu)
-            </li>
-            <li>
-              <span class="handover-check"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg></span>
-              Tài khoản quản trị cấp cao nhất
-            </li>
-            <li>
-              <span class="handover-check"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg></span>
-              Tài liệu hướng dẫn vận hành & quản trị CMS
-            </li>
-          </ul>
-
-          <div class="card" style="margin-top:2rem;background:var(--orange-tint);border-color:rgba(255,98,65,0.2);">
-            <h4 style="color:var(--orange);margin-bottom:0.5rem;">Liên hệ để bắt đầu</h4>
-            <p style="font-size:0.875rem;color:var(--ink-2);margin-bottom:1rem;">Báo giá có hiệu lực trong vòng 15 ngày kể từ ngày phát hành.</p>
-            <a href="mailto:hello@naucode.vn" class="btn-primary" style="display:inline-flex;">Gửi email cho NAUCode →</a>
-          </div>
-        </div>
-      </div>
-    </div>
-  </section>
 
   <!-- ── FOOTER ── -->
   <footer class="portal-footer">
     <div class="portal-footer-inner">
-      <div class="footer-left">© 2026 NAUCode · Tài liệu báo giá nội bộ</div>
-
-      <div>
-        <svg width="334" height="160" viewBox="0 0 334 160" fill="none" xmlns="http://www.w3.org/2000/svg" style="height:24px;width:auto;opacity:0.5;">
+      <div class="footer-left">
+        <svg width="334" height="160" viewBox="0 0 334 160" fill="none" xmlns="http://www.w3.org/2000/svg" style="height:22px;width:auto;opacity:0.45;margin-bottom:0.6rem;display:block;">
           <path d="M229.477 90.4261H260.805C255.904 113.786 234.94 131.91 210.134 131.91C181.538 131.91 158.365 108.171 158.365 80.0063C158.365 51.8415 181.538 28.0901 210.134 28.0901C234.94 28.0901 255.904 46.2138 260.805 69.5865H229.477C226.184 61.1514 218.878 55.6934 210.134 55.6934C197.966 55.6934 188.883 65.9174 188.883 80.0063C188.883 94.0953 197.966 104.319 210.134 104.319C218.878 104.319 226.184 98.8612 229.477 90.4261Z" fill="#FF6241"/>
           <path d="M0 129.207V30.793H22.5975L27.0411 40.4424H28.0083C30.7137 36.9691 40.5682 28.0901 55.6245 28.0901C78.9931 28.0901 95.0295 44.8819 95.0295 70.5397V129.207H64.5119V74.4047C64.5119 64.1808 57.3628 56.268 47.5213 56.268C37.6798 55.768 30.5307 64.1808 30.5307 74.4047V129.207H0Z" fill="#FF6241"/>
           <path d="M145.622 116.855C145.622 139.235 129.782 153.52 121.483 159.5L116.464 152.554C120.515 148.31 125.73 141.559 127.272 131.91C118.006 131.335 111.249 123.997 111.249 114.739C111.249 105.482 118.581 97.5558 128.24 97.5558C137.898 97.5558 145.622 104.894 145.622 116.855Z" fill="#FF6241"/>
           <path d="M145.622 47.9636C145.622 57.613 138.277 65.1471 128.436 65.1471C118.594 65.1471 111.249 57.613 111.249 47.9636C111.249 38.3142 118.581 30.7931 128.436 30.7931C138.29 30.7931 145.622 38.3272 145.622 47.9636Z" fill="#FF6241"/>
           <path d="M304.223 0.5L253.303 159.5H282.854L333.956 0.5H304.223Z" fill="#FF6241"/>
         </svg>
+        <span style="font-size:0.78rem;color:var(--ink-5);">© 2026 NAUCode · Tài liệu báo giá nội bộ</span>
       </div>
 
-      <div class="footer-right">
-        <a href="mailto:solutions@naucode.com">solutions@naucode.com</a>
-        <a href="https://naucode.io" target="_blank" rel="noopener">naucode.io</a>
+      <div class="footer-contact">
+        <p class="footer-contact-label">Sẵn sàng bắt đầu? Liên hệ NAUCode</p>
+        <a href="mailto:solutions@naucode.com" class="btn-primary" style="display:inline-flex;font-size:0.85rem;padding:0.6rem 1.25rem;">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="flex-shrink:0;"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+          solutions@naucode.com
+        </a>
+        <p class="footer-contact-sub">Báo giá hiệu lực 15 ngày · <a href="https://naucode.io" target="_blank" rel="noopener">naucode.io</a></p>
       </div>
     </div>
   </footer>
@@ -2075,7 +1967,7 @@ details[open] summary::after { transform: rotate(180deg); }
 (function() {
   var sections = document.querySelectorAll('section[id], div[id="ban-giao"]');
   var tocItems = document.querySelectorAll('.toc-item');
-  var navLinks = document.querySelectorAll('.nav-links a:not(.nav-cta)');
+  var navLinks = document.querySelectorAll('.nav-links a:not(.nav-contact-email)');
 
   function setActive(id) {
     tocItems.forEach(function(el) {
